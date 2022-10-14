@@ -7,8 +7,7 @@ $obj = new Model();
 if(isset($_POST['submit'])){
     $obj->insertPromotion($_POST);
 }//if isset close
-$data = $obj->displayPromotion();
-print_r($data)
+// $data = $obj->displayPromotion();
 
 ?>
 <!DOCTYPE html>
@@ -50,6 +49,18 @@ print_r($data)
                 <th>ID</th>
                 <th>Name</th>
             </tr>
+            <?php
+            /*Display promotions */
+            $data = $obj->displayPromotion();
+            $num=1;
+            foreach ($data as $value) {
+            ?>
+            <tr>
+                <td><?php echo $num++; ?></td>
+            </tr> 
+            <?php
+            }//foreach close
+            ?>
 
         </table>
 
