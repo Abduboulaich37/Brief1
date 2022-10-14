@@ -15,6 +15,7 @@ class Model{
             return $this->conn;
         } 
     }//constructor close 
+
      /*function define for insert promotions*/
     public function insertPromotion($post){
         $name = $_POST['name'];
@@ -25,7 +26,20 @@ class Model{
         }else{
             echo "Error".$sql."<br>".$this->conn->error;
         }
-    }
+    }//insertPromotion function close
+
+    /*function display promotions*/
+    public function displayPromotion (){
+        $sql = "SELECT * FROM promotions";
+        $result = $this->conn->query($sql);
+        if($result->num_rows>0){
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+            }//while close
+            return $data;
+        }//if close
+    }//display promotions close
+    
 }//class close
 
 ?>

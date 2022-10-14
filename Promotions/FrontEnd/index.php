@@ -7,7 +7,8 @@ $obj = new Model();
 if(isset($_POST['submit'])){
     $obj->insertPromotion($_POST);
 }//if isset close
-
+$data = $obj->displayPromotion();
+print_r($data)
 
 ?>
 <!DOCTYPE html>
