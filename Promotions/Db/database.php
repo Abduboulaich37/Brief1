@@ -38,7 +38,17 @@ class Model{
         }else{
             echo "Error".$sql."<br>".$this->conn->error;
         }
-    }//insertPromotion function close
+    }//updatePromotion function close
+
+    public function deletePromotion($delid){
+        $sql = "DELETE FROM promotions WHERE id='$delid'";
+        $result = $this->conn->query($sql);
+        if($result){
+            header('location:../FrontEnd/index.php?msg=del');
+        }else{
+            echo "Error".$sql."<br>".$this->conn->error;
+        }
+    }
 
 
     /*function display promotions*/

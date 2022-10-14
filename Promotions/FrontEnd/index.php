@@ -3,6 +3,7 @@
 include '../Db/database.php';
 include '../Db/insert.php';
 include '../Db/update.php';
+include '../Db/delete.php';
 
 
 ?>
@@ -32,6 +33,10 @@ include '../Db/update.php';
         if(isset($_GET['msg']) AND $_GET['msg']=='ups'){
             echo '<div class="alert alert-success">
           Promotion Updated <strong>Successfuly!</strong> </div>';
+        }
+        if(isset($_GET['msg']) AND $_GET['msg']=='del'){
+            echo '<div class="alert alert-success">
+          Promotion Deleted <strong>Successfuly!</strong> </div>';
         }
         ?>
 
