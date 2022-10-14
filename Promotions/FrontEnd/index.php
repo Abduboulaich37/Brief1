@@ -9,6 +9,12 @@ if(isset($_POST['submit'])){
 }//if isset close
 // $data = $obj->displayPromotion();
 
+/*Update Promotion*/
+if(isset($_POST['update'])){
+    $obj->updatePromotion($_POST);
+}//if isset close
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +39,36 @@ if(isset($_POST['submit'])){
             echo '<div class="alert alert-success">
           Promotion Inserted <strong>Successfuly!</strong> </div>';
         }
+        if(isset($_GET['msg']) AND $_GET['msg']=='ups'){
+            echo '<div class="alert alert-success">
+          Promotion Updated <strong>Successfuly!</strong> </div>';
+        }
         ?>
+
+        <?php
+        /*fetch promotion for update */ 
+        if(isset($_GET['editid'])){
+            $editid = $_GET['editid'];
+            $mypromotion = $obj->displayPromotionById($editid);
+        ?>
+
+        <!-- Update form -->
+        <form action="index.php" method="post">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" value="<?php echo $mypromotion['name']; ?>" placeholder="Enter name of promotion" class="form-control">
+            </div>
+            <div class="form-group text-center">
+                <input type="hidden" name="hid" value="<?php echo $mypromotion['id']; ?>" >
+                <input type="submit" name="update" value="Update" class="btn btn-info">
+            </div>
+        </form>
+
+         <?php
+                }else{
+
+    ?>
+
         <form action="index.php" method="post">
             <div class="form-group">
                 <label>Name</label>
@@ -42,26 +77,26 @@ if(isset($_POST['submit'])){
             <div class="form-group text-center">
                 <input type="submit" name="submit" value="Submit" class="btn btn-info">
             </div>
-        </form><br>
+        </form>
+        <?php }//else close?>
+        
+        <br>
         <h3 class="text-center text-danger">Display Promotions</h3>
         <table class="table table-bordered">
             <tr class="bg-primary text center">
-                <th style="width: 10%">ID</th>
-                <th style="width: 70%">Name</th>
+                <th style="width: 80%">Name</th>
                 <th style="width:  20%">Action</th>
             </tr>
             <?php
             /*Display promotions */
             $data = $obj->displayPromotion();
-            $num=1;
             foreach ($data as $value) {
             ?>
             <tr>
-                <td><?php echo $num++; ?></td>
                 <td><?php echo $value['name']; ?></td>
                 <td>
-                    <a href="index.php" class="btn btn-info">Edit</a>
-                    <a href="index.php" class="btn btn-danger">Delete</a>
+                    <a href="index.php?editid=<?php echo $value['id']; ?>" class="btn btn-info">Edit</a>
+                    <a href="index.php?deleteid=<?php echo $value['id']; ?>" class="btn btn-danger">Delete</a>
                 </td>
             </tr> 
             <?php

@@ -28,6 +28,19 @@ class Model{
         }
     }//insertPromotion function close
 
+    public function updatePromotion($post){
+        $name = $_POST['name'];
+        $editid = $post['hid'];
+        $sql = "UPDATE promotions SET name='$name' WHERE id=' $editid'";
+        $result = $this->conn->query($sql);
+        if ($result){
+            header('location:../FrontEnd/index.php?msg=ins');
+        }else{
+            echo "Error".$sql."<br>".$this->conn->error;
+        }
+    }//insertPromotion function close
+
+
     /*function display promotions*/
     public function displayPromotion (){
         $sql = "SELECT * FROM promotions";
@@ -39,7 +52,16 @@ class Model{
             return $data;
         }//if close
     }//display promotions close
-    
+
+    public function displayPromotionById($editid){
+        $sql = "SELECT * FROM promotions WHERE id = '$editid'";
+        $result = $this->conn->query($sql);
+        if ($result->num_rows==1){
+            $row = $result->fetch_assoc();
+            return $row;
+        }//if close
+    }//function displayPromotionById
+
 }//class close
 
 ?>
