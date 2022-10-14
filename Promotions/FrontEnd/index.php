@@ -46,8 +46,9 @@ if(isset($_POST['submit'])){
         <h3 class="text-center text-danger">Display Promotions</h3>
         <table class="table table-bordered">
             <tr class="bg-primary text center">
-                <th>ID</th>
-                <th>Name</th>
+                <th style="width: 10%">ID</th>
+                <th style="width: 70%">Name</th>
+                <th style="width:  20%">Action</th>
             </tr>
             <?php
             /*Display promotions */
@@ -58,6 +59,10 @@ if(isset($_POST['submit'])){
             <tr>
                 <td><?php echo $num++; ?></td>
                 <td><?php echo $value['name']; ?></td>
+                <td>
+                    <a href="index.php" class="btn btn-info">Edit</a>
+                    <a href="index.php" class="btn btn-danger">Delete</a>
+                </td>
             </tr> 
             <?php
             }//foreach close
