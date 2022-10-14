@@ -57,6 +57,7 @@ if(isset($_POST['submit'])){
             ?>
             <tr>
                 <td><?php echo $num++; ?></td>
+                <td><?php echo $value['name']; ?></td>
             </tr> 
             <?php
             }//foreach close
