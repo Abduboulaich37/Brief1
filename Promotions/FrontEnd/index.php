@@ -17,6 +17,7 @@ include '../Db/delete.php';
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <!-- Title -->
     <title>Brief 1 : Crud Promotion using PHP POO</title>
 </head>
@@ -63,7 +64,9 @@ include '../Db/delete.php';
                 }else{
 
     ?>
-
+        <!-- <div>
+        <input type="text" id="search" placeholder="Search" class="form-control" />
+        </div> -->
         <form action="index.php" method="post">
             <div class="form-group">
                 <label>Name</label>
