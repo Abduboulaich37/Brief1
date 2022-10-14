@@ -6,7 +6,7 @@ $obj = new Model();
 /*Insert Promotion*/
 if(isset($_POST['submit'])){
     $obj->insertPromotion($_POST);
-}
+}//if isset close
 
 
 ?>
@@ -27,6 +27,13 @@ if(isset($_POST['submit'])){
     <!-- Name of Crud -->
     <h1 class="text-center text-info">YourTasks</h1>
     <div class="container">
+        <!-- Success message -->
+        <?php
+        if(isset($_GET['msg']) AND $_GET['msg']=='ins'){
+            echo '<div class="alert alert-success">
+          Promotion Inserted <strong>Successfuly!</strong> </div>';
+        }
+        ?>
         <form action="index.php" method="post">
             <div class="form-group">
                 <label>Name</label>
